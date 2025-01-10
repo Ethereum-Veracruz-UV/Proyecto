@@ -10,19 +10,17 @@ description: >-
 :heart: Support us on **Gitcoin** GR20: [https://explorer.gitcoin.co/#/round/42161/26/34](https://explorer.gitcoin.co/#/round/42161/26/34)
 {% endhint %}
 
-## :new: What is EthPillar?
+## :new: Que es EthPillar?
 
-:smile: **Friendly Node Installer**: No node yet? Helps you installs a Ethereum node (Nimbus+Nethermind) stack in just minutes. MEVboost included.
+:smile: **Instalador de nodos amigable**: te ayuda a implementar una instalación systemd con clientes minoritarios como Nimbus-Nethermind o Teku-Besu en solo minutos. MEVboost incluido.
 
-:floppy\_disk: **Ease of use**: No more remembering CLI commands required. Access common node operations via a simple text user interface (TUI).
+:floppy\_disk: **Facilidad de uso** : Ya no es necesario recordar comandos CLI. Acceda a operaciones de nodo comunes a través de una interfaz de usuario de texto simple (TUI).
 
-:owl: **Fast Updates**: Quickly find and download the latest consensus/execution release. Less downtime!
+:owl: **Actualizaciones rápidas**: encuentre y descargue rápidamente la última versión de consenso/ejecución. ¡Menos tiempo de inactividad!
 
-:tada:**Compatibility**: Behind the scenes, node commands and file structure are identical to V2 staking setups.&#x20;
+:tada:**Compatibilidad**:detras de escena, los comandos de nodo y la estructura de archivos son idénticos a las configuraciones de staking V2.
 
-{% hint style="warning" %}
-Already a running a Validator? EthPillar is compatible with [a Coincashew V2 Staking Setup.](https://www.coincashew.com/coins/overview-eth/guide-or-how-to-setup-a-validator-on-eth2-mainnet)&#x20;
-{% endhint %}
+{% hint style="warning" %} ¿Ya tienes un validador en funcionamiento? EthPillar es compatible con una configuración de staking de Coincashew V2. {% endhint %}
 
 ## :sunglasses: Preview
 
@@ -65,7 +63,7 @@ Already a running a Validator? EthPillar is compatible with [a Coincashew V2 Sta
 
 ## :triangular\_ruler: Option 1: Automated One-Liner Install
 
-Open a terminal window from anywhere by typing `Ctrl+Alt+T`.&#x20;
+Open a terminal window from anywhere by typing`Ctrl+Alt+T`.&#x20;
 
 To install, paste the following:
 
