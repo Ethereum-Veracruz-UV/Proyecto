@@ -10,7 +10,7 @@ description: >-
 :heart: Support us on **Gitcoin** GR20: [https://explorer.gitcoin.co/#/round/42161/26/34](https://explorer.gitcoin.co/#/round/42161/26/34)
 {% endhint %}
 
-## :new: What is EthPillar?
+## :new Que es EthPillar?
 
 :smile: **Friendly Node Installer**: No node yet? Helps you installs a Ethereum node (Nimbus+Nethermind) stack in just minutes. MEVboost included.
 
