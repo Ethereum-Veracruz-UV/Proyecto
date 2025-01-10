@@ -156,37 +156,37 @@ Ensure your node has sufficient CPU/disk/network performance.
 
 ## :joy: POAP
 
-Are you a EthPillar Enjooyer? [Support this public good by purchasing a limited edition POAP!](https://checkout.poap.xyz/169495)
+¿Eres un EthPillar Enjooyer? [¡Apoye este bien público comprando un POAP de edición limitada!](https://checkout.poap.xyz/169495)
 
-<figure><img src="../../.gitbook/assets/3adf69e9-fb1b-4665-8645-60d71dd01a7b.png" alt=""><figcaption><p>Your EthPillar Enjoyoor's POAP</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/3adf69e9-fb1b-4665-8645-60d71dd01a7b.png" alt=""><figcaption><p>El POAP de su EthPillar Enjoyoor</p></figcaption></figure>
 
-**Purchase link:** [https://checkout.poap.xyz/169495](https://checkout.poap.xyz/169495)
+**Enlace de compra:** [https://checkout.poap.xyz/169495](https://checkout.poap.xyz/169495)
 
-ETH accepted on Mainnet, Arbitrum, Base, Optimism. :pray:
+ETH aceptado en Mainnet, Arbitrum, Base, Optimism. :pray:
 
-## :telephone: Get in touch
+## ☎️ Póngase en contacto con nosotros
 
-Have questions? Chat with other home stakers on [Discord](https://discord.gg/dEpAVWgFNB) or open PRs/issues on [Github](https://github.com/coincashew/ethpillar).&#x20;
+¿Tiene preguntas? Chatea con otros stakers de casas en [Discord](https://discord.gg/dEpAVWgFNB) o abre PRs/issues en [Github](https://github.com/coincashew/ethpillar).&#x20;
 
-Open source source code available here: [https://github.com/coincashew/EthPillar](https://github.com/coincashew/EthPillar)
+Código fuente abierto disponible aquí: [https://github.com/coincashew/EthPillar](https://github.com/coincashew/EthPillar)
 
-## :heart: Donations
+## :heart: Donaciones
 
-If you'd like to support this public goods project, find us on the next Gitcoin Grants.
+Si quieres apoyar este proyecto de bienes públicos, encuéntranos en las próximas subvenciones de Gitcoin.
 
-Our donation address is [0xCF83d0c22dd54475cC0C52721B0ef07d9756E8C0](https://etherscan.io/address/0xCF83d0c22dd54475cC0C52721B0ef07d9756E8C0) or coincashew.eth
+Nuestra dirección de donación es [0xCF83d0c22dd54475cC0C52721B0ef07d9756E8C0](https://etherscan.io/address/0xCF83d0c22dd54475cC0C52721B0ef07d9756E8C0) o coincashew.eth
 
-## :ballot\_box\_with\_check: How to Update
+## :ballot\_box\_with\_check: Cómo actualizar
 
 {% tabs %}
 {% tab title="TUI Update" %}
-Upon opening EthPillar,
+Al abrir EthPillar,
 
-* Navigate to **System Administration > Update EthPillar** and then quit and relaunch.
+* Vaya a Administración del sistema > Actualizar EthPillar** y a continuación, salga y vuelva a iniciar.
 {% endtab %}
 
 {% tab title="Manual Update" %}
-From a terminal, pull the latest updates from git.
+Desde un terminal, extraiga las últimas actualizaciones de git.
 
 ```bash
 cd ~/git/ethpillar
@@ -195,6 +195,6 @@ git pull
 {% endtab %}
 {% endtabs %}
 
-## :tada: Credits
+## :tada: Créditos
 
-Shout out to [accidental-green](https://github.com/accidental-green/validator-install) for their pioneering work in Python validator tools, which has unintentionally ignited the inspiration and direction for this project. We are building upon their innovative foundations by forking their validator-install code. A heartfelt thanks to accidental-green for their game-changing contributions to the open-source Ethereum ecosystem!
+Un saludo a [accidental-green](https://github.com/accidental-green/validator-install) por su trabajo pionero en herramientas de validación de Python, que ha encendido involuntariamente la inspiración y la dirección de este proyecto. Estamos construyendo sobre sus bases innovadoras mediante la bifurcación de su código de instalación de validador. ¡Un sincero agradecimiento a accidental-green por sus contribuciones revolucionarias al ecosistema Ethereum de código abierto!
