@@ -95,62 +95,62 @@ sudo ln -s ~/git/ethpillar/ethpillar.sh /usr/local/bin/ethpillar
 ethpillar
 ```
 
-## :tada:Next Steps
+## :tada:Próximos pasos
 
 {% hint style="success" %}
-Congrats on installing a EthPillar, making nodes and home staking easier!
+¡Felicidades por instalar un EthPillar, lo que facilita el staking de nodos y casas! {% insinuación final
 {% endhint %}
 
 <details>
 
-<summary>Additional step for new Node operators, new Validators</summary>
+<summary>Paso adicional para nuevos operadores de nodos, nuevos validadores</summary>
 
-**Step 1: Configure your network, port forwarding and firewall.**&#x20;
+**Paso 1: Configura tu red, reenvío de puertos y firewall.**&#x20;
 
-* With EthPillar, configuration can be changed at:
-  * **Tools > UFW Firewall > Enable firewall with default settings**
-  * Port forwarding is [manually configured](guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation/step-2-configuring-node.md#configure-port-forwarding), depending on your router.
-  * Confirm port forwarding is working with **Tools** > **Port Checker**
-* Alternatively configure manually per the manual guide. [Click here for detailed network configuration.](guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation/step-2-configuring-node.md#network-configuration)
+*Con EthPillar, la configuración se puede cambiar en:
+  * **Herramientas > UFW Firewall > Habilitar firewall con la configuración predeterminada**
+  * El reenvío de puertos [se configura manualmente](guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation/step-2-configuring-node.md#configure-port-forwarding), dependiendo de su enrutador.
+  * Confirmar que el reenvío de puertos funciona con **Tools** > **Port Checker**
+* Alternativamente, configure manualmente según la guía manual. [Haga clic aquí para ver la configuración detallada de la red.](guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation/step-2-configuring-node.md#network-configuration)
 
-**Step 2: Configure your BIOS to auto power on after power loss**
+**Paso 2: Configura tu BIOS para que se encienda automáticamente después de una pérdida de energía**
 
-Actual steps vary depending on your computer's BIOS. General idea here: [https://www.wintips.org/setup-computer-to-auto-power-on-after-power-outage/](https://www.wintips.org/setup-computer-to-auto-power-on-after-power-outage/)
+Los pasos reales varían según el BIOS de su computadora. Idea general aquí: [https://www.wintips.org/setup-computer-to-auto-power-on-after-power-outage/](https://www.wintips.org/setup-computer-to-auto-power-on-after-power-outage/)
 
-**Step 3: Enable Monitoring and Alerts (Optional)**
+**Paso 3: Habilitar la supervisión y las alertas (opcional)**
 
-Found under:
+Se encuentra en:
 
-* **Tools** > **Monitoring**
+* **Herramientas** > **Monitoreo**
 
-**Step 4: Benchmark your node (Optional)**
+**Paso 4: Comparar el nodo (opcional)**
 
-Ensure your node has sufficient CPU/disk/network performance.
+Asegúrese de que el nodo tenga suficiente rendimiento de CPU/disco/red.
 
-* **Tools** > **Yet-Another-Bench-Script**
+* **Herramientas** > ** otro script de banco**
 
 </details>
 
 <details>
 
-<summary>Additional steps for new Validators</summary>
+<summary>Additional Pasos adicionales para los nuevos validadores</summary>
 
-**Step 1: Setup Validator Keys**
+**Paso 1: Configurar las claves del validador**
 
-* Familarize yourself with the main guide's section on [setting up your validator keys.](guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation/step-5-installing-validator/setting-up-validator-keys.md)
-* When ready to generate your keys, go to **EthPillar > Validator Client > Generate / Import Validator Keys**
+* Familiarízate con la sección de la guía principal sobre la [configuración de tus claves de validación.](guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation/step-5-installing-validator/setting-up-validator-keys.md)
+* Cuando esté listo para generar sus claves, vaya a **EthPillar > Validator Client > Generar / Importar claves de validador**
 
-**Step 2: Upload deposit\_data.json to Launchpad**
+**Paso 2: Subir deposit_data.json a Launchpad**
 
-* To begin staking on Ethereum as a validator, you need to submit to the Launchpad your  deposit\_data.json file, which includes crucial withdrawal address details, and pay the required deposit of 32ETH per validator.
+* Para comenzar a apostar en Ethereum como validador, debe enviar al Launchpad su archivo de deposit_data.json, que incluye detalles cruciales de la dirección de retiro, y pagar el depósito requerido de 32ETH por validador.
 
-**Step 3: Congrats!**&#x20;
+**Paso 3: ¡Felicidades!**&#x20;
 
-* Now you're waiting in the Entry Queue [https://www.validatorqueue.com](https://www.validatorqueue.com/)
+*Ahora estás esperando en la cola de entrada [https://www.validatorqueue.com](https://www.validatorqueue.com/)
 
 <!---->
 
-* Check out the [next steps from the main guide](https://www.coincashew.com/coins/overview-eth/guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation/step-5-installing-validator/next-steps) for further knowledge. Especially the FAQ's "Wen staking rewards?"
+* Consulte los [siguientes pasos de la guía principal](https://www.coincashew.com/coins/overview-eth/guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation/step-5-installing-validator/next-steps) para obtener más información. Especialmente las preguntas frecuentes "¿Recompensas de staking Wen?"
 
 </details>
 
