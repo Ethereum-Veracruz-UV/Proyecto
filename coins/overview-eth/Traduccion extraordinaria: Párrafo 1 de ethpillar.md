@@ -1,54 +1,54 @@
 ---
-description: >-
-  Empowered, inspired, home staker. Free. Open source. Public goods for
+descripción: >-
+  Empoderado, inspirado, staker en casa. Gratis. Código abierto. Bienes públicos para
   Ethereum.
 ---
 
-# 🛡️ EthPillar: one-liner setup tool and node management TUI
+# 🛡️  EthPillar: herramienta de configuración de una sola línea y gestión de nodos TUI
 
 {% hint style="success" %}
-:heart: Support us on **Gitcoin** GR20: [https://explorer.gitcoin.co/#/round/42161/26/34](https://explorer.gitcoin.co/#/round/42161/26/34)
+:heart: Apóyanos en Gitcoin GR20: [https://explorer.gitcoin.co/#/round/42161/26/34](https://explorer.gitcoin.co/#/round/42161/26/34)
 {% endhint %}
 
-## :new: What is EthPillar?
+## :new:  ¿Qué es EthPillar?
 
-:smile: **Friendly Node Installer**: No node yet? Helps you installs a Ethereum node (Nimbus+Nethermind) stack in just minutes. MEVboost included.
+:smile: **Instalador de nodo amigable**: ¿Aún no hay nodo? Le ayuda a instalar una pila de nodo Ethereum (Nimbus + Nethermind) en solo minutos. MEVboost incluido.
 
-:floppy\_disk: **Ease of use**: No more remembering CLI commands required. Access common node operations via a simple text user interface (TUI).
+:floppy\_disk: **Facilidad de uso**: Ya no es necesario recordar los comandos de la CLI. Acceda a operaciones de nodo comunes a través de una interfaz de usuario de texto (TUI) simple.
 
-:owl: **Fast Updates**: Quickly find and download the latest consensus/execution release. Less downtime!
+:owl:  **Actualizaciones rápidas**: Encuentre y descargue rápidamente la última versión de consenso/ejecución. ¡Menos tiempo de inactividad!
 
-:tada:**Compatibility**: Behind the scenes, node commands and file structure are identical to V2 staking setups.&#x20;
+:tada:**Compatibilidad**: Detrás de escena, los comandos de los nodos y la estructura de archivos son idénticos a las configuraciones de staking V2.
 
 {% hint style="warning" %}
-Already a running a Validator? EthPillar is compatible with [a Coincashew V2 Staking Setup.](https://www.coincashew.com/coins/overview-eth/guide-or-how-to-setup-a-validator-on-eth2-mainnet)&#x20;
+¿Ya tienes un validador? EthPillar es compatible con [una configuración de staking de Coincashew V2.](https://www.coincashew.com/coins/overview-eth/guide-or-how-to-setup-a-validator-on-eth2-mainnet)&#x20;
 {% endhint %}
 
-## :sunglasses: Preview
+## :sunglasses: Vista previa
 
-<figure><img src="../../.gitbook/assets/preview02.png" alt=""><figcaption><p>Main Menu</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/preview02.png" alt=""><figcaption><p>Menú Principal</p></figcaption></figure>
 
 <div>
 
-<figure><img src="../../.gitbook/assets/preview01.png" alt=""><figcaption><p>Execution Client</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/preview01.png" alt=""><figcaption><p>Cliente de ejecución</p></figcaption></figure>
 
  
 
-<figure><img src="../../.gitbook/assets/preview03.png" alt=""><figcaption><p>Consensus Client</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/preview03.png" alt=""><figcaption><p>Cliente de consenso</p></figcaption></figure>
 
  
 
-<figure><img src="../../.gitbook/assets/preview04.png" alt=""><figcaption><p>Validator</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/preview04.png" alt=""><figcaption><p>Validador</p></figcaption></figure>
 
 </div>
 
 <div>
 
-<figure><img src="../../.gitbook/assets/preview05.png" alt=""><figcaption><p>System Administration</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/preview05.png" alt=""><figcaption><p>Administración del sistema</p></figcaption></figure>
 
  
 
-<figure><img src="../../.gitbook/assets/preview06.png" alt=""><figcaption><p>Tools</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/preview06.png" alt=""><figcaption><p>Herramientas</p></figcaption></figure>
 
  
 
@@ -56,32 +56,32 @@ Already a running a Validator? EthPillar is compatible with [a Coincashew V2 Sta
 
 </div>
 
-## :whale: Prerequisites
+## :whale: Prerrequisitos
 
-* [Review how staking works and the hardware requirements](guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation/prerequisites.md)
-* An [Ubuntu](guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation/prerequisites.md#setup-ubuntu) installation.&#x20;
-  * Tested working with Ubuntu 22.04 LTS
-  * Also appears compatible with Linux Mint 21.2, Debian 12
+* [Revisa cómo funciona el staking y los requisitos de hardware](guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation/prerequisites.md)
+*Una instalación de [Ubuntu](guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation/prerequisites.md#setup-ubuntu) instalación.&#x20;
+  * Probado trabajando con Ubuntu 22.04 LTS
+  * También aparece compatible con Linux Mint 21.2, Debian 12
 
-## :triangular\_ruler: Option 1: Automated One-Liner Install
+## :triangular\_ruler:Opción 1: Instalación automatizada de una sola línea
 
-Open a terminal window from anywhere by typing `Ctrl+Alt+T`.&#x20;
+Abra una ventana de terminal desde cualquier lugar escribiendo `Ctrl+Alt+T`.&#x20;
 
-To install, paste the following:
+Para instalarlo, pegue lo siguiente:
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/coincashew/EthPillar/main/install.sh)"
 ```
 
-## :handshake: Option 2: Manual Install
+## :handshake: Opción 2: Instalación manual
 
-**Install updates and packages:**
+**Instalar actualizaciones y paquetes:**
 
 ```bash
 sudo apt-get update && sudo apt-get install git curl ccze bc tmux
 ```
 
-**Clone the ethpillar repo and install:**
+**Clona el repositorio ethpillar e instala:**
 
 ```bash
 mkdir -p ~/git/ethpillar
@@ -89,29 +89,29 @@ git clone https://github.com/coincashew/ethpillar.git ~/git/ethpillar
 sudo ln -s ~/git/ethpillar/ethpillar.sh /usr/local/bin/ethpillar
 ```
 
-#### Run ethpillar:
+#### Ejecute ethpillar:
 
 ```bash
 ethpillar
 ```
 
-## :tada:Next Steps
+## :tada:Próximos pasos
 
 {% hint style="success" %}
-Congrats on installing a EthPillar, making nodes and home staking easier!
-{% endhint %}
+¡Felicidades por instalar un EthPillar, lo que facilita el staking de nodos y casas!
+{% insinuación final %}
 
 <details>
 
-<summary>Additional step for new Node operators, new Validators</summary>
+<summary>Additional Paso adicional para nuevos operadores de nodos, nuevos validadores</summary>
 
-**Step 1: Configure your network, port forwarding and firewall.**&#x20;
+**Paso 1: Configura tu red, reenvío de puertos y firewall.**&#x20;
 
-* With EthPillar, configuration can be changed at:
-  * **Tools > UFW Firewall > Enable firewall with default settings**
-  * Port forwarding is [manually configured](guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation/step-2-configuring-node.md#configure-port-forwarding), depending on your router.
-  * Confirm port forwarding is working with **Tools** > **Port Checker**
-* Alternatively configure manually per the manual guide. [Click here for detailed network configuration.](guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation/step-2-configuring-node.md#network-configuration)
+*Con EthPillar, la configuración se puede cambiar en:
+  * **Herramientas > UFW Firewall > Habilitar firewall con la configuración predeterminada**
+  * El reenvío de puertos [se configura manualmente](guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation/step-2-configuring-node.md#configure-port-forwarding), dependiendo de su enrutador.
+  * Confirmar que el reenvío de puertos funciona con **Tools** > **Port Checker**
+* Alternativamente, configure manualmente según la guía manual. [ Haga clic aquí para ver la configuración detallada de la red.](guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation/step-2-configuring-node.md#network-configuration)
 
 **Step 2: Configure your BIOS to auto power on after power loss**
 
