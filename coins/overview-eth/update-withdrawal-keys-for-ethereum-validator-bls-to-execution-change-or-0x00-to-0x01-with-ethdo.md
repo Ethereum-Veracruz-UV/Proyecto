@@ -1,85 +1,81 @@
 ---
-description: >-
-  A simplified guide to help you update your validators BLS 0x00 credentials to
-  execution withdrawal 0x01 credentials using the ETHDO tool by wealdtech.
+description : >-
+ Una guía simplificada para ayudarlo a actualizar sus credenciales de 0x00 de validación BLS para ejecutar credenciales de 0x01 de retiro utilizando la herramienta ETHDO de wealdtech.
 ---
 
-# 🦉 Update Withdrawal Keys for Ethereum Validator (BLS to Execution Change or 0x00 to 0x01) with ETHDO
-
+# 🦉Actualice las claves de retiro para Ethereum Validator (BLS a cambio de ejecución o 0x00 a 0x01) con ETHDO
 {% hint style="info" %}
-The following steps align with our [mainnet guide](guide-or-how-to-setup-a-validator-on-eth2-mainnet/). You may need to adjust file names and directory locations where appropriate. The core concepts remain the same.
+ Los siguientes pasos se alinean con nuestra [ guía de la red principal](guide-or-how-to-setup-a-validator-on-eth2-mainnet/). Es posible que tenga que ajustar los nombres de los archivos y las ubicaciones de los directorios cuando corresponda. Los conceptos básicos siguen siendo los mismos.
 {% endhint %}
 
-## :question:Overview: What? Withdrawals? Owls?
+## :question:Resumen: ¿Qué? ¿Retiros? ¿Buhos?
 
-* Greetings, fellow ETH staker! If you were staking before April 2, 2021, setting ETH withdrawal (0x01) credentials was not yet released and so, this guide is relevant for you.
-* As of the Shapella upgrade, ETH validators with 0x00 credentials should update to 0x01 credentials to enable partial withdrawals, the sweeping of excess ETH > 32.
-* If your validator previously voluntarily exited or you now would like to stop validator duties, you'll need to set your withdrawal credentials to fully reclaim your staked ETH.
+* ¡Saludos, compañero staker de ETH! Si estabas apostando antes del 2 de abril de 2021, aún no se había publicado la configuración de las credenciales de retiro de ETH (0x01) y, por lo tanto, esta guía es relevante para ti.
+* A partir de la actualización de Shapella, los validadores de ETH con credenciales 0x00 deben actualizarse a credenciales de 0x01 para permitir retiros parciales, el barrido del exceso de ETH > 32.
+* Si su validador se retiró voluntariamente anteriormente o ahora desea dejar de cumplir con sus deberes de validador, deberá configurar sus credenciales de retiro para reclamar completamente su ETH apostado.
 
-<figure><img src="../../.gitbook/assets/withdrawal-owl.png" alt=""><figcaption><p>Nimbus CL says: WITHDROWLS ON</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/withdrawal-owl.png" alt=""><figcaption><p>Nimbus CL dice: WITHDROWLS ON</p></figcaption></figure>
 
-## :thumbsup:Pre-requisites: Before you begin
+## :thumbsup:Pre-r:Requisitos previos: Antes de empezar
 
-* Your validator's mnemonic keys (the offline 24 word secrets)
-* An ETH withdrawal address **you control the private keys** to, ideally one from a hardware wallet. :octagonal\_sign::octagonal\_sign: **DO NOT USE A EXCHANGE ADDRESS!** :octagonal\_sign::octagonal\_sign:
-* An **offline air-gapped computer**. Create a Linux Live USB like [Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview) or [Tails](https://tails.boum.org/install/download/index.en.html); needs a USB key.
-* A ETH staking node using Ubuntu or Linux, also known as **online computer**.
-* A USB storage key for moving files between the offline and online computer.
-* Familiarize yourself with the [Ethereum.org Staking Withdrawals guide](https://launchpad.ethereum.org/en/withdrawals).
+* Las claves mnemotécnicas de tu validador (los secretos de 24 palabras fuera de línea)
+* Una dirección de retiro de ETH a la que controle las claves privadas, idealmente una de una billetera de hardware. :octagonal_sign::octagonal_sign: ¡NO USE UNA DIRECCIÓN DE INTERCAMBIO! :octagonal_sign::octagonal_sign:
+* Un **ordenador sin conexión con espacio de aire**. Crea un Linux Live USB como [Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview) o [Tails](https://tails.boum.org/install/download/index.en.html); necesita una llave USB.
+* Un nodo de staking de ETH que usa Ubuntu o Linux, también conocido como **computadora en línea**.
+* Una llave de almacenamiento USB para mover archivos entre la computadora en línea y sin conexión.
+* Familiarízate con la [guía de Ethereum.org Retiros de Staking](https://launchpad.ethereum.org/en/withdrawals).
 
-### Step 1: Prepare chain information
+### Paso 1: Preparar la información de la cadena
 
-* If you no longer have a synced full node, use option 1.
-* Option 2 uses your own consensus client to generate chain information.
-
+* Si ya no tiene un nodo completo sincronizado, utilice la opción 1.
+* La opción 2 utiliza su propio cliente de consenso para generar información de la cadena.
 <details>
 
-<summary>Option 1: Download "offline-preparation.json" file, save to USB key, transfer to offline air-gapped computer.</summary>
+<summary>Opción 1: Descargue el archivo "offline-preparation.json", guárdelo en una llave USB, transfiéralo a una computadora sin conexión.</summary>
 
-1. On your **online computer**, open a terminal window or shell. Shortcut: CTRL + ALT + T
+1. En su **computadora en línea**,  abra una ventana de terminal o shell. Atajo: CTRL + ALT + T
 
 <!---->
 
-2. Download Ethdo v1.30.0 from Github [https://github.com/wealdtech/ethdo/releases](https://github.com/wealdtech/ethdo/releases)
+2. Descargar Ethdo v1.30.0 desde Github [https://github.com/wealdtech/ethdo/releases](https://github.com/wealdtech/ethdo/releases)
 
 ```
 cd ~
 wget https://github.com/wealdtech/ethdo/releases/download/v1.30.0/ethdo-1.30.0-linux-amd64.tar.gz
 ```
 
-3. Verify the checksum is valid. Located on the release page, the Checksum string is located in the corresponding sha256 file.
-
+3. Compruebe que la suma de comprobación sea válida. Ubicada en la página de versión, la cadena de suma de comprobación se encuentra en el archivo sha256 correspondiente.
 ```
 echo "6fbe587f522ad2eb8d6ce22dfdb15f7d163b491a670bf50e5acf12dd0f58125c ethdo-1.30.0-linux-amd64.tar.gz" | sha256sum -c
 ```
 
-Successful verification occurs if you see "OK" in the resulting output.
+La verificación correcta se produce si ve "OK" en la salida resultante.
 
 ```
 ethdo-1.30.0-linux-amd64.tar.gz: OK
 ```
 
-4. Extract ethdo.
+4. Extraer ethdo.
 
 ```
 tar -xvf ethdo-1.30.0-linux-amd64.tar.gz
 ```
 
-5. Verify your validator's credential status with your index number. Replace`<MY-VALIDATOR-INDEX>` accordingly.
+5. Verifique el estado de las credenciales de su validador con su número de índice. Reemplace según corresponda.`<MY-VALIDATOR-INDEX>`
 
 ```
 ./ethdo validator credentials get --validator=<MY-VALIDATOR-INDEX>
 ```
 
-Example output of a validator with BLS credentials. :white\_check\_mark:
+Ejemplo de salida de un validador con credenciales BLS. :white\_check\_mark:
 
 ```
 BLS credentials: 0x0002a0addda8106aed690654c7af7af0bc5ccde321c8e5e2319ff432cee70396
 ```
 
-If you have BLS credentials, continue with the rest of this guide. Otherwise, stop because ethdo will output "`Ethereum execution address`" and that means you've already set your withdrawal address!
+Si tiene credenciales de BLS, continúe con el resto de esta guía. De lo contrario, deténgase porque ethdo generará "" y eso significa que ya ha establecido su dirección de retiro. "`Ethereum execution address`"
 
-6. Download pre-generated offline preparation files made daily by EthStaker.&#x20;
+6. Descargue archivos de preparación fuera de línea pregenerados diariamente por EthStaker.&#x20;
 
 <pre class="language-bash"><code class="lang-bash">#mainnet
 wget https://files.ethstaker.cc/offline-preparation-mainnet.tar.gz
@@ -90,7 +86,7 @@ wget https://files.ethstaker.cc/offline-preparation-goerli.tar.gz
 wget https://files.ethstaker.cc/offline-preparation-goerli.tar.gz.sha256
 </code></pre>
 
-7. Verify the file's sha256 hash against the sha256 files to ensure correctness.
+7. Verifique el hash sha256 del archivo con los archivos sha256 para asegurarse de que sea correcto.
 
 ```bash
 #mainnet
@@ -100,7 +96,7 @@ sha256sum offline-preparation-mainnet.tar.gz
 sha256sum offline-preparation-goerli.tar.gz
 ```
 
-The output should match the contents of the .sha256 file. View the contents:
+La salida debe coincidir con el contenido del archivo .sha256. Ver el contenido:
 
 ```bash
 #mainnet
@@ -110,7 +106,7 @@ cat offline-preparation-mainnet.tar.gz.sha256
 cat offline-preparation-goerli.tar.gz.sha256
 ```
 
-8. Extract the tar file to find `offline-preparation.json`
+8. Extraiga el archivo tar para encontrar `offline-preparation.json`
 
 ```bash
 #mainnet
@@ -120,140 +116,138 @@ tar -xvf offline-preparation-mainnet.tar.gz
 tar -xvf offline-preparation-goerli.tar.gz
 ```
 
-9. Using your USB key, copy both
+9. Con su llave USB, copie ambos
 
-* the `ethdo` executable&#x20;
-* and `offline-preparation.json` file&#x20;
+* el ejecutable `ethdo` &#x20;
+* and file `offline-preparation.json` &#x20;
 
-to your offline air-gapped computer.
+a su computadora sin conexión aislada.
 
 </details>
 
 <details>
 
-<summary>Option 2: Generate "offline-preparation.json" file, save to USB key, transfer to offline air-gapped computer.</summary>
+<summaryOpción 2: Genere un archivo "offline-preparation.json", guárdelo en una llave USB, transfiéralo a una computadora sin conexión.</summary>
 
-1. On your **online computer**, open a terminal window or shell. Shortcut: CTRL + ALT + T
+1. En su **computadora en línea**, abra una ventana de terminal o shell. Atajo: CTRL + ALT + T
 
 <!---->
 
-2. Download Ethdo v1.30.0 from Github [https://github.com/wealdtech/ethdo/releases](https://github.com/wealdtech/ethdo/releases)
+2. Descargar Ethdo v1.30.0 desde Github [https://github.com/wealdtech/ethdo/releases](https://github.com/wealdtech/ethdo/releases)
 
 ```
 cd ~
 wget https://github.com/wealdtech/ethdo/releases/download/v1.30.0/ethdo-1.30.0-linux-amd64.tar.gz
 ```
 
-3. Verify the checksum is valid. Located on the release page, the Checksum string is located in the corresponding sha256 file.
+3. Compruebe que la suma de comprobación sea válida. Ubicada en la página de versión, la cadena de suma de comprobación se encuentra en el archivo sha256 correspondiente.
 
 ```
 echo "6fbe587f522ad2eb8d6ce22dfdb15f7d163b491a670bf50e5acf12dd0f58125c ethdo-1.30.0-linux-amd64.tar.gz" | sha256sum -c
 ```
 
-Successful verification occurs if you see "OK" in the resulting output.
+La verificación correcta se produce si ve "OK" en la salida resultante.
 
 ```
 ethdo-1.30.0-linux-amd64.tar.gz: OK
 ```
 
-4. Extract ethdo.
+4. Extraer ethdo.
 
 ```
 tar -xvf ethdo-1.30.0-linux-amd64.tar.gz
 ```
 
-5. Verify your validator's credential status with your index number. Replace`<MY-VALIDATOR-INDEX>` accordingly.
+5.Verifique el estado de las credenciales de su validador con su número de índice. Reemplace según corresponda. `<MY-VALIDATOR-INDEX>`
 
 ```
 ./ethdo validator credentials get --validator=<MY-VALIDATOR-INDEX>
 ```
 
-Example output of a validator with BLS credentials. :white\_check\_mark:
+Ejemplo de salida de un validador con credenciales BLS.. :white\_check\_mark:
 
 ```
 BLS credentials: 0x0002a0addda8106aed690654c7af7af0bc5ccde321c8e5e2319ff432cee70396
 ```
 
-If you have BLS credentials, continue with the rest of this guide. Otherwise, stop because ethdo will output "`Ethereum execution address`" and that means you've already set your withdrawal address!
+Si tiene credenciales de BLS, continúe con el resto de esta guía. De lo contrario, deténgase porque ethdo generará "" y eso significa que ya ha establecido su dirección de retiro. "`Ethereum execution address`"
 
-6. Run the following command to call your consensus client and generate a list of active validators with relevant information for use on your offline computer. In order to generate this list from your local beacon node, [ensure the REST API](https://github.com/wealdtech/ethdo#setting-up) is enabled; otherwise the default fallback beacon node, [http://mainnet-consensus.attestant.io](http://mainnet-consensus.attestant.io), will be called.
+6.Ejecute el siguiente comando para llamar al cliente de consenso y generar una lista de validadores activos con información relevante para su uso en el equipo sin conexión. Para generar esta lista desde su nodo de baliza local, [asegúrese de que la API REST](https://github.com/wealdtech/ethdo#setting-up) esté habilitada; de lo contrario, se llamará al nodo de baliza de reserva predeterminado, [http://mainnet-consensus.attestant.io](http://mainnet-consensus.attestant.io),.
 
 ```
 ./ethdo validator credentials set --prepare-offline
 ```
 
-After a minute or two, you should see the text, "`offline-preparation.json generated`"
+Después de uno o dos minutos, debería ver el texto, "`offline-preparation.json generated`"
 
-7. Using your USB key, copy both
+7. Con su llave USB, copie ambos
+* El ejecutable `ethdo` &#x20;
+* y archivo `offline-preparation.json` &#x20;
 
-* the `ethdo` executable&#x20;
-* and `offline-preparation.json` file&#x20;
-
-to your offline air-gapped computer.
+a su computadora sin conexión aislada.
 
 </details>
 
-### Step 2: Create change credentials file
+### Paso 2: Crear un archivo de credenciales de cambio
 
 <details>
 
-<summary>Run ethdo with your mnemonic and withdrawal address. Transfer "change-operations.json" file via USB key back to online computer.</summary>
+<summary>Ejecute ethdo con su mnemotecnia y dirección de retiro. Transfiera el archivo "change-operations.json" a través de una llave USB a la computadora en línea.</summary>
 
-1. On your **offline air-gapped computer**, disconnect any internet Ethernet cables or WiFi / bluetooth before continuing. Make sure you're truly offline!
-
-<!---->
-
-2. Open a terminal window or shell. Shortcut: CTRL + ALT + T
+1. En su **computadora sin conexión, desconecte**, todos los cables Ethernet de Internet o WiFi / bluetooth antes de continuar. ¡Asegúrate de estar realmente desconectado!
 
 <!---->
 
-3. After copying the `ethdo` executable and `offline-preparation.json` file to your **offline computer's HOME directory**, ensure the ethdo file has execute permissions.
+2. Abra una ventana de terminal o shell. Atajo: CTRL + ALT + T
+
+<!---->
+
+3. Después de copiar el ejecutable y el archivo en **el directorio HOME de su computadora sin conexión**,asegúrese de que el archivo ethdo tenga permisos de ejecución. `ethdo` executable and `offline-preparation.json`
 
 ```
 chmod +x ethdo
 ```
 
-4. This ethdo command sets your validator credentials and the output is stored in a `change-operations.json` file. Replace `<MY MNEMONIC PHRASE>` AND `<MY ETH WITHDRAW ADDRESS>` accordingly.&#x20;
+4. Este comando ethdo establece sus credenciales de validador y la salida se almacena en un archivo. Reemplace AND en consecuencia. `change-operations.json` `<MY MNEMONIC PHRASE>` `<MY ETH WITHDRAW ADDRESS>` &#x20;
 
-:octagonal\_sign: Double check your work as this is permanent once set! :octagonal\_sign:&#x20;
+:octagonal\_sign: ¡Revisa tu trabajo, ya que es permanente una vez configurado! :octagonal\_sign:&#x20;
 
-:octagonal\_sign: FINAL REMINDER: DO NOT USE AN EXCHANGE ETH ADDRESS AS YOUR WITHDRAWAL ADDRESS :octagonal\_sign:
+:octagonal\_sign: RECORDATORIO FINAL: NO UTILICES UNA DIRECCIÓN ETH DE INTERCAMBIO COMO TU DIRECCIÓN DE RETIRO :octagonal\_sign:
 
 ```
 ./ethdo validator credentials set --offline --mnemonic="<MY MNEMONIC PHRASE>” --withdrawal-address=<MY ETH WITHDRAW ADDRRESS>
 ```
 
-5. After a few seconds, `change-operations.json` is created. It's normal for no message to be displayed.
-6. Triple check the resulting file for your withdraw address.
+5. Después de unos segundos, se crea. Es normal que no se muestre ningún mensaje. `change-operations.json`
+6. Verifique tres veces el archivo resultante para su dirección de retiro.
 
 ```
 cat change-operations.json
 ```
 
-7. Ensure the field **"to\_execution\_address":** contains your withdraw address.
-
+7. Asegúrese de que el campo  **"to\_execution\_address":** contiene su dirección de retiro.
 <!---->
 
-8. Using your USB key, copy
+8. Con su llave USB, copie
 
-* `change-operations.json` file
+* `change-operations.json`  archivo
 
-back to your online computer.
+Regrese a su computadora en línea.
 
-9. Power off your **offline air-gapped computer.**
+9. Apague su **computadora sin conexión sin conexión.**
 
 </details>
 
-### Step 3: Broadcast change credentials
+### Paso 3: Transmitir credenciales de cambio
 
 <details>
 
-<summary>Simply run the set command to send your change.</summary>
+<summary>Simplemente ejecute el comando set para enviar su cambio. </summary>
 
-:bulb:If you no longer have a synced full node, you can alternatively upload `change-operation.json` file to [https://beaconcha.in/tools/broadcast](https://beaconcha.in/tools/broadcast)
+:bulb:Si ya no tiene un nodo completo sincronizado, también puede cargar el archivo en  `change-operation.json` [https://beaconcha.in/tools/broadcast](https://beaconcha.in/tools/broadcast)
 
-1. On the **online computer**, copy the `change-operation.json` to your home directory, where `ethdo` is also located.
-2. Run the following command to broadcast your withdrawal credentials. &#x20;
+1. En la **computadora en línea**, copie el directorio de su hogar,  `change-operation.json` donde también se encuentra. `ethdo`
+2. Ejecute el siguiente comando para transmitir sus credenciales de retiro. &#x20;
 
 ```
 ./ethdo validator credentials set
@@ -262,7 +256,7 @@ back to your online computer.
 </details>
 
 {% hint style="success" %}
-Congrats! Your BLS to Execution change is now pending in a queue, waiting to be included in a block.&#x20;
+¡Felicidades! El cambio de BLS a Ejecución ahora está pendiente en una cola, a la espera de ser incluido en un bloque.&#x20;
 {% endhint %}
 
 ## :fast\_forward:Próximos pasos
