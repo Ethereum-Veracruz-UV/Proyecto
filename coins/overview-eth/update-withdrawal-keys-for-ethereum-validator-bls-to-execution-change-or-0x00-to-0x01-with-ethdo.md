@@ -265,44 +265,44 @@ back to your online computer.
 Congrats! Your BLS to Execution change is now pending in a queue, waiting to be included in a block.&#x20;
 {% endhint %}
 
-## :fast\_forward:Next Steps
+## :fast\_forward:Próximos pasos
 
-#### For your information:
+#### Para su información:
 
-* Up to 16 BLS to Execution changes are included in each proposed block.
-* Depending on the withdrawal queue size, your withdrawal change may take up to a few days to be finalized.
-* Terminology: prefix of 0x01 = "Type 1" = execution withdrawal credentials = Withdrawals enabled
-* As a partial withdrawal, periodically every few days any amount of ETH over 32 will be automatically swept to your withdrawal address.
+* Se incluyen hasta 16 cambios de BLS a ejecución en cada bloque propuesto.
+* Dependiendo del tamaño de la cola de retiro, el cambio de retiro puede tardar unos días en finalizarse.
+* Terminología: prefijo de 0x01 = "Tipo 1" = credenciales de retiro de ejecución = Retiros habilitados
+* Como retiro parcial, periódicamente cada pocos días, cualquier cantidad de ETH superior a 32 se transferirá automáticamente a su dirección de retiro.
 
-#### Learn more from:
+#### Más información en:
 
-* Official Consensus Layer Withdrawal References
+* Referencias oficiales de la capa de consenso sobre la retirada
   * Prysm: [https://docs.prylabs.network/docs/wallet/withdraw-validator](https://docs.prylabs.network/docs/wallet/withdraw-validator)
   * Nimbus: [https://nimbus.guide/withdrawals.html](https://nimbus.guide/withdrawals.html)
   * Lighthouse: [https://lighthouse-book.sigmaprime.io/voluntary-exit.html#withdrawal-of-exited-funds](https://lighthouse-book.sigmaprime.io/voluntary-exit.html#withdrawal-of-exited-funds)
   * Teku: [https://docs.teku.consensys.net/HowTo/Withdrawal-Keys](https://docs.teku.consensys.net/HowTo/Withdrawal-Keys)
   * Lodestar: [https://chainsafe.github.io/lodestar/reference/cli/#validator-bls-to-execution-change](https://chainsafe.github.io/lodestar/reference/cli/#validator-bls-to-execution-change)
-* Ethdo official withdrawals guide: [https://github.com/wealdtech/ethdo/blob/master/docs/changingwithdrawalcredentials.md](https://github.com/wealdtech/ethdo/blob/master/docs/changingwithdrawalcredentials.md)
-* Attestant's Post: [https://www.attestant.io/posts/understanding-withdrawals/](https://www.attestant.io/posts/understanding-withdrawals/)
+* Guía oficial de retiros de Ethdo: [https://github.com/wealdtech/ethdo/blob/master/docs/changingwithdrawalcredentials.md](https://github.com/wealdtech/ethdo/blob/master/docs/changingwithdrawalcredentials.md)
+* Puesto del atestado: [https://www.attestant.io/posts/understanding-withdrawals/](https://www.attestant.io/posts/understanding-withdrawals/)
 
-#### **Need extra live support?**&#x20;
+#### **¿Necesitas soporte adicional en vivo?**&#x20;
 
-* Find Ethstaker frens on the [Ethstaker](https://discord.io/ethstaker) Discord!
-* Use reddit: [r/Ethstaker](https://www.reddit.com/r/ethstaker/), or [DMs](https://www.reddit.com/user/coincashew), or [r/coincashew](https://www.reddit.com/r/coincashew/)
+* ¡Encuentra a los frens de Ethstaker en el Discord de [Ethstaker](https://discord.io/ethstaker) .
+* Usa reddit: [r/Ethstaker](https://www.reddit.com/r/ethstaker/), o [DMs](https://www.reddit.com/user/coincashew), o [r/coincashew](https://www.reddit.com/r/coincashew/)
 
-#### Like these guides?
+#### ¿Te gustan estas guías?
 
-* [Tips much appreciated](../../donations.md) :pray:
-* [**Support us on Gitcoin Grants**](https://gitcoin.co/grants/1653/eth2-staking-guides-by-coincashew)**:** We build this guide exclusively by community support!🙏
-* Feedback or pull-requests: [https://github.com/coincashew/coincashew](https://github.com/coincashew/coincashew)
+* [Consejos muy apreciados](../../donations.md) :pray:
+* [**Apóyanos en Gitcoin Grants**](https://gitcoin.co/grants/1653/eth2-staking-guides-by-coincashew)**:** ¡Construimos esta guía exclusivamente con el apoyo de la comunidad!🙏
+* Comentarios o solicitudes de extracción: [https://github.com/coincashew/coincashew](https://github.com/coincashew/coincashew)
 
-## :books:FAQ
+## :books:PREGUNTAS MÁS FRECUENTES
 
 <details>
 
-<summary>Using my node, how can I check if my change is pending in the withdrawals queue?</summary>
+<summary>Usando mi nodo, ¿cómo puedo verificar si mi cambio está pendiente en la cola de retiros?</summary>
 
-Replace \<MY VALIDATOR INDEX>. Adjust the REST API port number, if needed.&#x20;
+Reemplace <MI ÍNDICE DE VALIDADOR>. Ajuste el número de puerto de la API de REST, si es necesario.&#x20;
 
 Lighthouse/Nimbus=5052. Prysm=3500. Lodestar=9596. Teku=5051.
 
@@ -310,7 +310,7 @@ Lighthouse/Nimbus=5052. Prysm=3500. Lodestar=9596. Teku=5051.
 curl -s "http://localhost:5052/eth/v1/beacon/pool/bls_to_execution_changes" | jq '.data | map(select(.message.validator_index=="<MY VALIDATOR INDEX>"))'
 ```
 
-Example output:
+Ejemplo de salida:
 
 ```
 [
@@ -325,19 +325,19 @@ Example output:
 ]
 ```
 
-However, if the output shows \[], this means your change is complete and no longer in the queue.
+Sin embargo, si la salida muestra [], significa que el cambio se ha completado y ya no está en la cola.
 
 </details>
 
 <details>
 
-<summary>How much longer do I need to wait for this change to take effect?</summary>
+<summary>¿Cuánto tiempo más tengo que esperar para que este cambio surta efecto?</summary>
 
-Each block can add 16 `blstoexecutionchange`messages and the time to process a BLS change depends on the size of the withdraw queue.&#x20;
+Cada bloque puede agregar 16 mensajes y el tiempo para procesar un cambio de BLS depende del tamaño de la cola de retiro. `blstoexecutionchange` &#x20;
 
-Find the size of the queue with the following command.&#x20;
+Encuentre el tamaño de la cola con el siguiente comando.&#x20;
 
-Adjust the REST API port number, if needed.&#x20;
+Ajuste el número de puerto de la API de REST, si es necesario.&#x20;
 
 Lighthouse/Nimbus=5052. Prysm=3500. Lodestar=9596. Teku=5051.
 
@@ -349,60 +349,58 @@ curl -s http://localhost:5052/eth/v1/beacon/pool/bls_to_execution_changes | jq '
 
 <details>
 
-<summary>How do I know the credential change worked?</summary>
+<summary>¿Cómo sé que el cambio de credencial funcionó?</summary>
 
-Replace `<MyValidatorIndex>` and run the following ethdo command:
+Reemplace y ejecute el siguiente comando ethdo: `<MyValidatorIndex>`
 
 ```
 ethdo validator credentials get --validator=<MyValidatorIndex>
 ```
+La salida resultante comenzará con: `Ethereum execution address`
 
-The resulting output will start with: `Ethereum execution address`
-
-Alternatively, check your favorite beacon chain explorer such as [beaconcha.in](https://beaconcha.in/validators/withdrawals) and [etherscan.io](https://etherscan.io/) for the 0x01 credentials.
-
-</details>
-
-<details>
-
-<summary>I voluntary exited a while ago and don't have a synced node anymore. What are my options?</summary>
-
-Use Ethdo on an offline computer to create the exit message, as shown in step 2 above, and then perform step 3 using the alternative broadcast method with beaconcha.in
+Alternativamente, consulte su explorador de cadenas de balizas favorito, como [beaconcha.in](https://beaconcha.in/validators/withdrawals) y [etherscan.io](https://etherscan.io/) para obtener las credenciales 0x01.
 
 </details>
 
 <details>
 
-<summary>Can I use a Gnosis Safe address as my ETH withdrawal address?</summary>
+<summary>Salí voluntariamente hace un tiempo y ya no tengo un nodo sincronizado. ¿Cuáles son mis opciones?</summary>
 
-Yes -- in fact, this is also a great idea as it allows you to rotate private keys (and keep the same public address) or use other more multi-sig strategies.
-
-reference: [https://safe.global](https://safe.global/)
+Use Ethdo en un equipo sin conexión para crear el mensaje de salida, como se muestra en el paso 2 anterior, y luego realice el paso 3 usando el método de transmisión alternativo con beaconcha.in
 
 </details>
 
 <details>
 
-<summary>Is the fee-recipient address the same as this withdrawal address?</summary>
+<summary>¿Puedo usar una dirección de Gnosis Safe como mi dirección de retiro de ETH?</summary>
 
-They can both be set to the same ETH address; however, understand that these are independent and **withdrawal credentials** have a different purpose than your **fee recipient**, which receives transaction fee tips from proposed blocks.
-
-</details>
-
-<details>
-
-<summary>Partial Withdrawals vs Full Withdrawals?</summary>
-
-* **Full validator withdrawal:** To withdraw your entire stake on Ethereum and no longer perform validator duties. Exit your validator, and then after your exit request progresses through the withdraw queue while finally your full validator balance is transferred to your withdrawal address.
-* **Partial validator withdrawal:** To withdraw your validator’s earnings only. For a validator, any amount over the initial 32 ETH deposit is the earnings and is automatically swept every few days to the withdrawal address.
+Sí, de hecho, esta también es una gran idea, ya que le permite rotar las claves privadas (y mantener la misma dirección pública) o usar otras estrategias más multi-sig.
+referencia: [https://safe.global](https://safe.global/)
 
 </details>
 
 <details>
 
-<summary>I don't have a mnemonic phrase. I used a private key.</summary>
+<summary>¿La dirección del destinatario de la tarifa es la misma que esta dirección de retiro?</summary>
 
-In step 2, use this credentials set command instead.
+Ambos se pueden configurar en la misma dirección ETH; Sin embargo, comprenda que estas son independientes y las **credenciales de retiro** tienen un propósito diferente al de su **destinio de tarifa**, que recibe consejos de tarifas de transacción de los bloques propuestos.
+
+</details>
+
+<details>
+
+<summary>¿Retiros parciales vs retiros completos?</summary>
+
+* **Retiro completo del validador:**Retirar toda su participación en Ethereum y dejar de realizar funciones de validador. Salga de su validador y luego después de que su solicitud de salida avance a través de la cola de retiro, finalmente su saldo total del validador se transfiere a su dirección de retiro.
+* **Retirada parcial del validador:** Para retirar solo las ganancias de su validador. Para un validador, cualquier cantidad que supere el depósito inicial de 32 ETH es la ganancia y se transfiere automáticamente cada pocos días a la dirección de retiro.
+
+</details>
+
+<details>
+
+<summary>No tengo una frase mnemotécnica. Usé una clave privada.</summary>
+
+En el paso 2, utilice este comando credentials set en su lugar.
 
 ```
 ethdo validator credentials set --private-key=<my-priv-key> --withdrawal-address=<my-eth-withdrawal-address>
@@ -412,24 +410,25 @@ ethdo validator credentials set --private-key=<my-priv-key> --withdrawal-address
 
 <details>
 
-<summary>I want different withdrawal addresses for each of my validators.</summary>
+<summary>Quiero diferentes direcciones de retiro para cada uno de mis validadores.</summary>
 
-In step 2, use this credentials set command instead.
+En el paso 2, utilice este comando credentials set en su lugar.
 
 ```
 ethdo validator credentials set --mnemonic="<my-mnemonic-phrase>" --path='m/12381/3600/<my iTH validator>/0' --withdrawal-address=<my-eth-withdrawal-address>
 ```
 
-Where the path is the derivation path to your withdrawal key.
+Donde la ruta es la ruta de derivación a su clave de retiro.
 
-* For example, `m/12381/3600/`_`i`_`/0` is the path to a withdrawal key, where _i_ starts at 0 for your 1st validator, 1 for your 2nd validator ...
+* Por ejemplo, _i_ es el camino a una clave de retiro, donde i comienza en 0 para su 1er validador, 1 para su 2do validado ... ´m/12381/3600//0' 
+
 
 </details>
 
 <details>
 
-<summary>I need to change my withdrawal address.</summary>
+<summary>Necesito cambiar mi dirección de retiro.</summary>
 
-The only way to change withdrawal addresses is to perform a full withdrawal by exiting a validator and then, creating a new validator key as if starting the staking journey over again.
+La única forma de cambiar las direcciones de retiro es realizar un retiro completo saliendo de un validador y luego, creando una nueva clave de validador como si comenzara el viaje de participación nuevamente.
 
 </details>
